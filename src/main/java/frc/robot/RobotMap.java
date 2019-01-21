@@ -29,13 +29,11 @@ public class RobotMap {
   // DIO
 
   // CAN
-  public static int leftMasterPort = 1;
-  public static int leftSlavePort = 2;
-  public static int rightMasterPort = 3;
-  public static int rightSlavePort = 4;
+  public static int testMotorPort = 0;
 
   // USB
   public static int joystickPort = 0;
 
   // Other Drivetrain Constants
+  public static double maxSpeed = 0.5;
 }

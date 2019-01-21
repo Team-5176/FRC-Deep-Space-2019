@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
@@ -16,29 +17,35 @@ import frc.robot.RobotMap;
 /**
  * Add your docs here.
  */
-public class DriveSubsystem extends Subsystem {
+public class TestingSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  public WPI_TalonSRX leftMaster = new WPI_TalonSRX(RobotMap.leftMasterPort);
-  public WPI_TalonSRX leftSlave = new WPI_TalonSRX(RobotMap.leftSlavePort);
-  public WPI_TalonSRX rightMaster = new WPI_TalonSRX(RobotMap.rightMasterPort);
-  public WPI_TalonSRX rightSlave = new WPI_TalonSRX(RobotMap.rightSlavePort);
+  // public WPI_TalonSRX leftMaster = new WPI_TalonSRX(RobotMap.leftMasterPort);
+  // public WPI_TalonSRX leftSlave = new WPI_TalonSRX(RobotMap.leftSlavePort);
+  // public WPI_TalonSRX rightMaster = new WPI_TalonSRX(RobotMap.rightMasterPort);
+  // public WPI_TalonSRX rightSlave = new WPI_TalonSRX(RobotMap.rightSlavePort);
+  public VictorSP testingMotor = new VictorSP(RobotMap.testMotorPort);
 
-  public DifferentialDrive drive = new DifferentialDrive(leftMaster, rightMaster);
+  // public DifferentialDrive drive = new DifferentialDrive(leftMaster, rightMaster);
 
-  public DriveSubsystem() {
-    leftSlave.follow(leftMaster);
-    rightSlave.follow(rightMaster);
+  public TestingSubsystem() {
+    // leftSlave.follow(leftMaster);
+    // rightSlave.follow(rightMaster);
   }
 
-  public void manualDrive(double move, double turn) {
+  public void setSpeed(double speed) {
     
-    if (move < 0.5) {
-      move = 0.5;
+    if (speed < 0.1) {
+      speed = 0;
     }
 
-    drive.arcadeDrive(move, turn);
+    if (speed > RobotMap.maxSpeed) {
+      speed = RobotMap.maxSpeed;
+    }
+
+    // drive.arcadeDrive(move, turn);
+    testingMotor.set(speed);
   }
 
   @Override
