@@ -7,31 +7,30 @@
 
 package frc.robot.commands;
 
-// import edu.wpi.first.wpilibj.DriverStation;
-// import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class TestMoveMotor extends Command {
-  public TestMoveMotor() {
+public class DriveTrainMove extends Command {
+  public DriveTrainMove() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.testSubsystem);
+    requires(Robot.literallyTheDriveTrain);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
   }
-  
+
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    
-    double move = -Robot.oi.pilotJoystick.getY();
-    // DriverStation.reportWarning(Robot.oi.pilotJoystick.getY() + "", false);
-    Robot.testSubsystem.setSpeed(move);
+    // the meat boi
+    double joyX = Robot.oi.pilotJoystick.getX();
+    double joyY = Robot.oi.pilotJoystick.getY();
+    double joyZ = Robot.oi.pilotJoystick.getZ();
 
+    Robot.literallyTheDriveTrain.moveMecanumDrive(joyX, joyY, joyZ);
   }
 
   // Make this return true when this Command no longer needs to run execute()

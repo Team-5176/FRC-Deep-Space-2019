@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import frc.robot.RobotMap;
+import frc.robot.commands.DriveTrainMove;
 
 /**
  * Add your docs here.
@@ -26,9 +27,41 @@ public class DriveTrainSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
+  public void moveMecanumDrive(double joyX, double joyY, double joyZ) { // tradition has been broken :(
+    /* also its the function to drive the robot */
+    if (joyX < 0.1 && joyX > -0.1) {
+      // eliminate small joystick wobble
+      joyX = 0;
+    }
+    if (joyY < 0.1 && joyY > -0.1) {
+      // eliminate small joystick wobble
+      joyY = 0;
+    }
+
+    if (joyX > RobotMap.MAX_DRIVE_SPEED) {
+      joyX = RobotMap.MAX_DRIVE_SPEED;
+    }
+
+    if (joyX < -RobotMap.MAX_DRIVE_SPEED) {
+      joyX = -RobotMap.MAX_DRIVE_SPEED;
+    }
+
+    if (joyY > RobotMap.MAX_DRIVE_SPEED) {
+      joyY = RobotMap.MAX_DRIVE_SPEED;
+    }
+
+    if (joyY < -RobotMap.MAX_DRIVE_SPEED) {
+      joyY = -RobotMap.MAX_DRIVE_SPEED;
+    }
+
+    mecanumDrive.driveCartesian(joyY, joyX, joyZ);
+    // mecanumDrive.driveCartesian(1.0, 1.0, 1.0); // only for the memes :D
+  }
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new DriveTrainMove());
   }
 }

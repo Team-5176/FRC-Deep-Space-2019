@@ -53,6 +53,7 @@ public class TestingSubsystem extends Subsystem {
 
     // drive.arcadeDrive(move, turn);
     testingMotor.set(speed);
+    // testingMotor.set(1); // only for the memes :D
     // DriverStation.reportWarning("get: " + testingMotor.get() + "", false);
   }
 

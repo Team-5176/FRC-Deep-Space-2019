@@ -41,4 +41,5 @@ public class RobotMap {
 
   // Other Drivetrain Constants
   public static double maxSpeed = 1;
+  public static final double MAX_DRIVE_SPEED =1;// 0.6;
 }
