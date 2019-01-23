@@ -29,6 +29,7 @@ public class TestMoveMotor extends Command {
   protected void execute() {
     
     double move = -Robot.oi.pilotJoystick.getY();
+    // DriverStation.reportWarning(Robot.oi.pilotJoystick.getY() + "", false);
     Robot.testSubsystem.setSpeed(move);
 
   }

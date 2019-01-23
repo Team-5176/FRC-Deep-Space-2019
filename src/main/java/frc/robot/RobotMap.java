@@ -25,15 +25,20 @@ public class RobotMap {
   // public static int rangefinderModule = 1;
 
   // PWM
+  public static int testMotorPort = 0;
+
+  public static int frontLeftMotorPort = 1;
+  public static int frontRightMotorPort = 2;
+  public static int backLeftMotorPort = 3;
+  public static int backRightMotorPort = 4;
 
   // DIO
 
   // CAN
-  public static int testMotorPort = 0;
 
   // USB
   public static int joystickPort = 0;
 
   // Other Drivetrain Constants
-  public static double maxSpeed = 0.5;
+  public static double maxSpeed = 1;
 }

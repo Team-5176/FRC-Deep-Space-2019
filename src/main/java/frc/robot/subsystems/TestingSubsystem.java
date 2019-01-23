@@ -7,6 +7,8 @@
 
 package frc.robot.subsystems;
 
+// import edu.wpi.first.wpilibj.DriverStation;
+
 // import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.VictorSP;
@@ -37,7 +39,7 @@ public class TestingSubsystem extends Subsystem {
 
   public void setSpeed(double speed) {
     
-    if (speed < 0.1) {
+    if (speed < 0.1 && speed > -0.1) {
       speed = 0;
     }
 
@@ -45,8 +47,13 @@ public class TestingSubsystem extends Subsystem {
       speed = RobotMap.maxSpeed;
     }
 
+    if (speed < -RobotMap.maxSpeed) {
+      speed = -RobotMap.maxSpeed;
+    }
+
     // drive.arcadeDrive(move, turn);
     testingMotor.set(speed);
+    // DriverStation.reportWarning("get: " + testingMotor.get() + "", false);
   }
 
   @Override
