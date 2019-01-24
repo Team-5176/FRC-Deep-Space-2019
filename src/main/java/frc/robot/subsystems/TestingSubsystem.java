@@ -29,6 +29,7 @@ public class TestingSubsystem extends Subsystem {
   // public WPI_TalonSRX rightMaster = new WPI_TalonSRX(RobotMap.rightMasterPort);
   // public WPI_TalonSRX rightSlave = new WPI_TalonSRX(RobotMap.rightSlavePort);
   public VictorSP testingMotor = new VictorSP(RobotMap.testMotorPort);
+  public VictorSP testingMotor2 = new VictorSP(RobotMap.testMotorPort2);
 
   // public DifferentialDrive drive = new DifferentialDrive(leftMaster, rightMaster);
 
@@ -53,6 +54,26 @@ public class TestingSubsystem extends Subsystem {
 
     // drive.arcadeDrive(move, turn);
     testingMotor.set(speed);
+    // testingMotor.set(1); // only for the memes :D
+    // DriverStation.reportWarning("get: " + testingMotor.get() + "", false);
+  }
+
+  public void setSpeed2(double speed) {
+    
+    if (speed < 0.1 && speed > -0.1) {
+      speed = 0;
+    }
+
+    if (speed > RobotMap.maxSpeed) {
+      speed = RobotMap.maxSpeed;
+    }
+
+    if (speed < -RobotMap.maxSpeed) {
+      speed = -RobotMap.maxSpeed;
+    }
+
+    // drive.arcadeDrive(move, turn);
+    testingMotor2.set(speed);
     // testingMotor.set(1); // only for the memes :D
     // DriverStation.reportWarning("get: " + testingMotor.get() + "", false);
   }

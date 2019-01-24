@@ -26,6 +26,7 @@ public class RobotMap {
 
   // PWM
   public static int testMotorPort = 0;
+  public static int testMotorPort2 = 5;
 
   public static int frontLeftMotorPort = 1;
   public static int frontRightMotorPort = 2;
@@ -38,6 +39,7 @@ public class RobotMap {
 
   // USB
   public static int joystickPort = 0;
+  public static int coPilotJoystickPort = 1;
 
   // Other Drivetrain Constants
   public static double maxSpeed = 1;

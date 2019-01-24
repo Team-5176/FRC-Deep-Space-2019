@@ -29,8 +29,15 @@ public class TestMoveMotor extends Command {
   protected void execute() {
     
     double move = -Robot.oi.pilotJoystick.getY();
+
+    // 3 is the Z rotate axis
+    double move1 = -Robot.oi.coPilotJoystick.getRawAxis(3);
     // DriverStation.reportWarning(Robot.oi.pilotJoystick.getY() + "", false);
-    Robot.testSubsystem.setSpeed(move);
+    // Robot.testSubsystem.setSpeed2(move);
+    // Robot.testSubsystem.setSpeed(move1);
+    // Robot.testSubsystem.setSpeed(0.11); // port 0
+    Robot.testSubsystem.testingMotor.set(0.4); // manual, port 0
+    Robot.testSubsystem.setSpeed2(1); // port 5
 
   }
 

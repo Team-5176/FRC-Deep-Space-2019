@@ -40,8 +40,8 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     oi = new OI();
-    // testSubsystem = new TestingSubsystem();
-    literallyTheDriveTrain = new DriveTrainSubsystem();
+    testSubsystem = new TestingSubsystem();
+    // literallyTheDriveTrain = new DriveTrainSubsystem();
 
     chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());

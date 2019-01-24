@@ -20,6 +20,7 @@ public class OI { // means operator input
   // You create one by telling it which joystick it's on and which button
   // number it is.
   public Joystick pilotJoystick = new Joystick(RobotMap.joystickPort);
+  public Joystick coPilotJoystick = new Joystick(RobotMap.coPilotJoystickPort);
   // Button button = new JoystickButton(stick, buttonNumber);
 
   // There are a few additional built in buttons you can use. Additionally,
