@@ -41,7 +41,14 @@ public class RobotMap {
   public static int joystickPort = 0;
   public static int coPilotJoystickPort = 1;
 
+  public static int camera0Port = 0;
+  public static int camera1Port = 1;
+
+  // Joystick port 2 is A on the logitechs
+  public static int motorToggleButton = 2;
+
   // Other Drivetrain Constants
   public static double maxSpeed = 1;
   public static final double MAX_DRIVE_SPEED =1;// 0.6;
+  public static double vacuumSpeed = 0.2;
 }

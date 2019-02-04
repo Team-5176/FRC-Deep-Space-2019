@@ -7,6 +7,10 @@
 
 package frc.robot;
 
+
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.cscore.VideoMode;
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -25,10 +29,12 @@ import frc.robot.subsystems.TestingSubsystem;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static ExampleSubsystem subsystem = new ExampleSubsystem();
+  // public static ExampleSubsystem subsystem = new ExampleSubsystem();
   public static TestingSubsystem testSubsystem;// = new TestingSubsystem();
   public static DriveTrainSubsystem literallyTheDriveTrain;
   public static OI oi;
+  public static UsbCamera camera0;
+  public static UsbCamera camera1;
 
   Command autonomousCommand;
   SendableChooser<Command> chooser = new SendableChooser<>();
@@ -41,11 +47,19 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     oi = new OI();
     testSubsystem = new TestingSubsystem();
-    // literallyTheDriveTrain = new DriveTrainSubsystem();
+    literallyTheDriveTrain = new DriveTrainSubsystem();
 
-    chooser.setDefaultOption("Default Auto", new ExampleCommand());
+    // chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
-    SmartDashboard.putData("Auto mode", chooser);
+    // SmartDashboard.putData("Auto mode", chooser);
+
+    camera0 = CameraServer.getInstance().startAutomaticCapture(RobotMap.camera0Port);
+    // camera0.setResolution(640, 360);
+    camera0.setVideoMode(VideoMode.PixelFormat.kMJPEG, 640, 360, 60);
+
+    camera1 = CameraServer.getInstance().startAutomaticCapture(RobotMap.camera1Port);
+    // camera1.setResolution(640, 360);
+    camera1.setVideoMode(VideoMode.PixelFormat.kMJPEG, 640, 360, 60);
   }
 
   /**

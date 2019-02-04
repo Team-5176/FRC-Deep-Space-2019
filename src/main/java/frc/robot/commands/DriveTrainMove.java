@@ -7,6 +7,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
@@ -26,11 +27,11 @@ public class DriveTrainMove extends Command {
   @Override
   protected void execute() {
     // the meat boi
-    double joyX = Robot.oi.pilotJoystick.getX();
-    double joyY = Robot.oi.pilotJoystick.getY();
-    double joyZ = Robot.oi.pilotJoystick.getZ();
+    double joyX = -Robot.oi.pilotJoystick.getX() * 0.8;
+    double joyY = Robot.oi.pilotJoystick.getY() * 0.5;
+    double joyZ = -Robot.oi.pilotJoystick.getZ() * 0.5;
 
-    Robot.literallyTheDriveTrain.moveMecanumDrive(joyX, joyY, joyZ);
+    Robot.literallyTheDriveTrain.moveMecanumDrive(joyY, joyX, joyZ);
   }
 
   // Make this return true when this Command no longer needs to run execute()
