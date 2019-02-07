@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.DriverStation;
 // import edu.wpi.first.wpilibj.DriverStation;
 // import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
@@ -26,13 +27,27 @@ public class TestMoveMotor extends Command {
   protected void initialize() {
   }
 
+  // for vacuum toggle button
   boolean lastButtonPress = true;
   boolean motorState = false;
   int differenceCounter = 0;
+
+  
   
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    // begin limelight testing code
+    double limeX = RobotMap.limelightTx.getDouble(0.0);
+    double limeY = RobotMap.limelightTy.getDouble(0.0);
+    double limeA = RobotMap.limelightTa.getDouble(0.0);
+    boolean limeHasTarget = RobotMap.limelightTv.getDouble(0.0) == 1;
+
+    SmartDashboard.putNumber("LimelightX", limeX);
+    SmartDashboard.putNumber("LimelightY", limeY);
+    SmartDashboard.putNumber("LimelightA", limeA);
+    SmartDashboard.putBoolean("LimelightHas", limeHasTarget);
+    // end limelight testing code
     
     double move = -Robot.oi.coPilotJoystick.getY();
 
@@ -48,6 +63,7 @@ public class TestMoveMotor extends Command {
     
     boolean currentPress = Robot.oi.pilotJoystick.getRawButton(RobotMap.motorToggleButton);
     boolean isDifferenceBetweenPresses = !(currentPress == lastButtonPress);
+
 
     // DriverStation.reportWarning(Robot.oi.pilotJoystick.getRawButton(2) + "", false);
     if (isDifferenceBetweenPresses) {
@@ -65,6 +81,9 @@ public class TestMoveMotor extends Command {
       // Robot.testSubsystem.testingMotor.set(0.0); // port 0; manual control
     }
     lastButtonPress = currentPress;
+
+    
+
   }
 
   // Make this return true when this Command no longer needs to run execute()

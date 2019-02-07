@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.PneumaticArms;
 import frc.robot.subsystems.TestingSubsystem;
 
 /**
@@ -32,6 +33,7 @@ public class Robot extends TimedRobot {
   // public static ExampleSubsystem subsystem = new ExampleSubsystem();
   public static TestingSubsystem testSubsystem;// = new TestingSubsystem();
   public static DriveTrainSubsystem literallyTheDriveTrain;
+  public static PneumaticArms pneumaticArms;
   public static OI oi;
   public static UsbCamera camera0;
   public static UsbCamera camera1;
@@ -48,6 +50,7 @@ public class Robot extends TimedRobot {
     oi = new OI();
     testSubsystem = new TestingSubsystem();
     literallyTheDriveTrain = new DriveTrainSubsystem();
+    pneumaticArms = new PneumaticArms();
 
     // chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());

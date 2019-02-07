@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
 /**
@@ -17,7 +18,11 @@ import edu.wpi.first.networktables.NetworkTableInstance;
  * floating around.
  */
 public class RobotMap {
-  public static NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+  public static NetworkTable limelightTable = NetworkTableInstance.getDefault().getTable("limelight");
+  public static NetworkTableEntry limelightTx = limelightTable.getEntry("tx");
+  public static NetworkTableEntry limelightTy = limelightTable.getEntry("ty");
+  public static NetworkTableEntry limelightTa = limelightTable.getEntry("ta");
+  public static NetworkTableEntry limelightTv = limelightTable.getEntry("tv");
   // For example to map the left and right motors, you could define the
   // following variables to use with your drivetrain subsystem.
   // public static int leftMotor = 1;
@@ -50,9 +55,17 @@ public class RobotMap {
 
   // Joystick port 2 is A on the logitechs
   public static int motorToggleButton = 2;
+  // Joystick port 1 is X on the logitechs
+  public static int secondToggleButton = 1;
+  // Joystick port 4 is Y on the logitechs
+  public static int pneumaticToggleButton = 4;
 
   // Other Drivetrain Constants
   public static double maxSpeed = 1;
   public static final double MAX_DRIVE_SPEED =1;// 0.6;
   public static double vacuumSpeed = 0.2;
+  public static final double VISION_RANGE = 3.0;
+  public static final double VISION_AUTO_SPEED = 0.3;
+  public static final double VISION_PRECISION_RANGE = 1.0;
+  public static final double VISION_PRECISION_SPEED = 0.2;
 }
