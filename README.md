@@ -2,4 +2,4 @@
 
 See LICENSE for license.
 
-**TL;DR: Don't use anything here until after the 2019 season.**
+**TL;DR: Don't use anything here until after the 2019 FRC season.**
