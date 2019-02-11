@@ -42,8 +42,8 @@ public class DriveTrainMove extends Command {
     // DriverStation.reportWarning("moving: " + joyY + " " + joyX + " " + joyZ, false);
 
     double limeX = RobotMap.limelightTx.getDouble(0.0);
-    double limeY = RobotMap.limelightTy.getDouble(0.0);
-    double limeA = RobotMap.limelightTa.getDouble(0.0);
+    // double limeY = RobotMap.limelightTy.getDouble(0.0);
+    // double limeA = RobotMap.limelightTa.getDouble(0.0);
     boolean limeHasTarget = RobotMap.limelightTv.getDouble(0.0) == 1;
 
     boolean currentPress2 = Robot.oi.pilotJoystick.getRawButton(RobotMap.secondToggleButton);
