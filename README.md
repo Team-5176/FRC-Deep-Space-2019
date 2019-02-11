@@ -2,4 +2,4 @@
 
 See LICENSE for license.
 
-**TL;DR: Dont use anything here until after the season.**
+**TL;DR: Don't use anything here until after the 2019 season.**
