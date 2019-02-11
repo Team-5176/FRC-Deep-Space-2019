@@ -59,6 +59,8 @@ public class RobotMap {
   public static int secondToggleButton = 1;
   // Joystick port 4 is Y on the logitechs
   public static int pneumaticToggleButton = 4;
+  // Joystick port 3 is B on the logitechs
+  public static int pneumaticToggleButton2 = 3;
 
   // Other Drivetrain Constants
   public static double maxSpeed = 1;

@@ -21,6 +21,7 @@ import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.PneumaticArms;
 import frc.robot.subsystems.TestingSubsystem;
+import frc.robot.subsystems.VacuumPumps;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -34,6 +35,7 @@ public class Robot extends TimedRobot {
   public static TestingSubsystem testSubsystem;// = new TestingSubsystem();
   public static DriveTrainSubsystem literallyTheDriveTrain;
   public static PneumaticArms pneumaticArms;
+  public static VacuumPumps vacuumPumps;
   public static OI oi;
   public static UsbCamera camera0;
   public static UsbCamera camera1;
@@ -51,6 +53,7 @@ public class Robot extends TimedRobot {
     testSubsystem = new TestingSubsystem();
     literallyTheDriveTrain = new DriveTrainSubsystem();
     pneumaticArms = new PneumaticArms();
+    vacuumPumps = new VacuumPumps();
 
     // chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());

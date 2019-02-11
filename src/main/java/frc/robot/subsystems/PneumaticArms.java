@@ -19,6 +19,30 @@ public class PneumaticArms extends Subsystem {
   // here. Call these from Commands.
   public static Solenoid solenoid0 = new Solenoid(0);
   public static Solenoid solenoid1 = new Solenoid(1);
+  public void setSolenoid0(boolean set) {
+    solenoid0.set(set);
+  }
+  public void setSolenoid1(boolean set) {
+    solenoid1.set(set);
+  }
+
+  public static Solenoid solenoid6 = new Solenoid(6);
+  public static Solenoid solenoid7 = new Solenoid(7);
+  public void setSolenoid6(boolean set) {
+    solenoid6.set(set);
+  }
+  public void setSolenoid7(boolean set) {
+    solenoid7.set(set);
+  }
+
+  public static Solenoid solenoid2 = new Solenoid(2);
+  public static Solenoid solenoid3 = new Solenoid(3);
+  public void setSolenoid2(boolean set) {
+    solenoid2.set(set);
+  }
+  public void setSolenoid3(boolean set) {
+    solenoid3.set(set);
+  }
 
   @Override
   public void initDefaultCommand() {

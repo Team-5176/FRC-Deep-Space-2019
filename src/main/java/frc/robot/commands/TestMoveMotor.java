@@ -54,8 +54,8 @@ public class TestMoveMotor extends Command {
     // 3 is the Z rotate axis
     // double move1 = -Robot.oi.coPilotJoystick.getRawAxis(3);
     // DriverStation.reportWarning(Robot.oi.pilotJoystick.getY() + "", false);
-    // Robot.testSubsystem.setSpeed2(move);
-    Robot.testSubsystem.setSpeed(move);
+    Robot.testSubsystem.setSpeed2(move);
+    // Robot.testSubsystem.setSpeed(move);
     // Robot.testSubsystem.setSpeed(move1);
     // Robot.testSubsystem.setSpeed(0.11); // port 0
     // Robot.testSubsystem.testingMotor.set(0.3); // manual, port 0
@@ -75,10 +75,10 @@ public class TestMoveMotor extends Command {
     }
     if (motorState) {
       // DriverStation.reportWarning("it is on", false);
-      // Robot.testSubsystem.testingMotor.set(RobotMap.vacuumSpeed); // port 0; manual control
+      Robot.testSubsystem.testingMotor.set(RobotMap.vacuumSpeed); // port 0; manual control
     } else {
       // DriverStation.reportWarning("no go", false);
-      // Robot.testSubsystem.testingMotor.set(0.0); // port 0; manual control
+      Robot.testSubsystem.testingMotor.set(0.0); // port 0; manual control
     }
     lastButtonPress = currentPress;
 

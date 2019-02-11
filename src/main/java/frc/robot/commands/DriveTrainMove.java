@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
@@ -57,7 +58,8 @@ public class DriveTrainMove extends Command {
     }
     if (state2) {
       // we will do the vision stuff
-      DriverStation.reportWarning("thing", false);
+      // DriverStation.reportWarning("thing", false);
+      SmartDashboard.putBoolean("VisionOn", true);
       if (limeHasTarget) {
         // if (limeX < RobotMap.VISION_RANGE && limeX > -RobotMap.VISION_RANGE) {
         //   limeX = 0.0;
@@ -82,6 +84,7 @@ public class DriveTrainMove extends Command {
       }
     } else {
       // not doing vision stuff
+      SmartDashboard.putBoolean("VisionOn", false);
     }
     lastButtonPress2 = currentPress2;
   }
