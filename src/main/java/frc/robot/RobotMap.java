@@ -48,7 +48,8 @@ public class RobotMap {
   public static int rearClimberMotorPort = 7;
 
   // DIO
-  public static int climberLimitSwitchPort = 0;
+  public static int climberFrontLimitSwitchPort = 0;
+  public static int climberRearLimitSwitchPort = 1;
 
   // CAN
 
@@ -59,14 +60,23 @@ public class RobotMap {
   public static int camera0Port = 0;
   public static int camera1Port = 1;
 
-  // Joystick port 2 is A on the logitechs
-  public static int motorToggleButton = 2;
-  // Joystick port 1 is X on the logitechs
-  public static int secondToggleButton = 1;
-  // Joystick port 4 is Y on the logitechs
-  public static int pneumaticToggleButton = 4;
-  // Joystick port 3 is B on the logitechs
-  public static int pneumaticToggleButton2 = 3;
+  // LOGITECH CONTROLLER MAP:
+  // 1:X
+  // 2:A
+  // 3:B
+  // 4:Y
+  
+  // Begin pilotJoystick mappings
+  public static int motorToggleButton = 2; // A
+  public static int secondToggleButton = 1; // X
+  public static int pneumaticToggleButton = 4; // Y
+  public static int pneumaticToggleButton2 = 3; // B
+  // End pilotJoystick mappings
+
+  // Begin coPilotJoystick mappings
+  public static int manualRearClimbOverride = 1; // X
+  public static int manualFrontClimbOverride = 2; // A
+  // End coPilotJoystick mappings
 
   // Other Drivetrain Constants
   public static double maxSpeed = 1;
@@ -76,4 +86,5 @@ public class RobotMap {
   public static final double VISION_AUTO_SPEED = 0.3;
   public static final double VISION_PRECISION_RANGE = 1.0;
   public static final double VISION_PRECISION_SPEED = 0.2;
+  public static final double PANIC_CLIMB_SPEED = 0.1; // subject to change
 }

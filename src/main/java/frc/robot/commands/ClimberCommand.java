@@ -10,6 +10,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class ClimberCommand extends Command {
   public ClimberCommand() {
@@ -23,10 +24,73 @@ public class ClimberCommand extends Command {
   protected void initialize() {
   }
 
+  public boolean panicModeFront = false;
+  public boolean panicModeRear = false;
+
+  // TODO THE FOLLOWING TESTING CODE WILL NEED TO BE REMOVED LATER
+  boolean testMoveAt40 = false;
+  boolean testMoveAt5 = false;
+  // END TESTING CODE
+
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    SmartDashboard.putBoolean("limitSwitch", Robot.climberSystem.limitSwitch.get());
+    boolean limitSwitchFrontStatus = Robot.climberSystem.limitSwitchFront.get();
+    boolean limitSwitchRearStatus = Robot.climberSystem.limitSwitchRear.get();
+    // I believe that the limitSwitchStatus is set to true when not depressed,
+    // but false when it is depressed. This is only because of the way the switch
+    // is wired.
+    SmartDashboard.putBoolean("limitSwitchFront", limitSwitchFrontStatus);
+    SmartDashboard.putBoolean("limitSwitchRear", limitSwitchRearStatus);
+    if (!limitSwitchFrontStatus) {
+      panicModeFront = true;
+    }
+    if (!limitSwitchRearStatus) {
+      panicModeRear = true;
+    }
+    if (panicModeFront) {
+      // once we have activated panic mode we want to check for the manual override button
+      if (Robot.oi.coPilotJoystick.getRawButton(RobotMap.manualFrontClimbOverride)) {
+        panicModeFront = false;
+        
+      } else {
+        // panic mode == true; manual override == false.
+        Robot.climberSystem.climberFrontMotor.set(RobotMap.PANIC_CLIMB_SPEED);
+      }
+    } else {
+      // panic mode == false.
+
+    }
+    // no matter what, if we have the manual override button pressed
+    // we want the climber to start moving UP (so that side of the robot would go down)
+    if (Robot.oi.coPilotJoystick.getRawButton(RobotMap.manualFrontClimbOverride)) {
+      Robot.climberSystem.climberFrontMotor.set(-0.2); // TODO: value subject to change
+    }
+    if (panicModeRear) {
+
+    } else {
+
+    }
+
+    // TODO THE FOLLOWING TESTING CODE WILL NEED TO BE REMOVED LATER
+    if (Robot.oi.coPilotJoystick.getRawButton(2)) { // A
+      testMoveAt40 = true;
+      testMoveAt5 = false;
+    } else if (Robot.oi.coPilotJoystick.getRawButton(4)) { // Y
+      testMoveAt40 = false;
+      testMoveAt5 = true;
+    } else if (Robot.oi.coPilotJoystick.getRawButton(3)) { // B
+      testMoveAt40 = false;
+      testMoveAt5 = false;
+    }
+    if (testMoveAt40) {
+      Robot.climberSystem.climberFrontMotor.set(0.4);
+    } else if (testMoveAt5) {
+      Robot.climberSystem.climberFrontMotor.set(RobotMap.PANIC_CLIMB_SPEED);
+    } else {
+      Robot.climberSystem.climberFrontMotor.set(0.0);
+    }
+    // END TESTING CODE
   }
 
   // Make this return true when this Command no longer needs to run execute()

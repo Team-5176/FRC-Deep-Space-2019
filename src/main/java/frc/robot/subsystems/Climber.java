@@ -20,15 +20,10 @@ public class Climber extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  public DigitalInput limitSwitch = new DigitalInput(RobotMap.climberLimitSwitchPort);
+  public DigitalInput limitSwitchFront = new DigitalInput(RobotMap.climberFrontLimitSwitchPort);
+  public DigitalInput limitSwitchRear = new DigitalInput(RobotMap.climberRearLimitSwitchPort);
   public VictorSP climberFrontMotor = new VictorSP(RobotMap.frontClimberMotorPort);
   public VictorSP climberRearMotor = new VictorSP(RobotMap.rearClimberMotorPort);
-
-  public void setClimbOnOff(boolean status) {
-    if (!limitSwitch.get()) {
-
-    }
-  }
 
   @Override
   public void initDefaultCommand() {
