@@ -18,11 +18,13 @@ import edu.wpi.first.networktables.NetworkTableInstance;
  * floating around.
  */
 public class RobotMap {
+  // Limelight Stuff
   public static NetworkTable limelightTable = NetworkTableInstance.getDefault().getTable("limelight");
   public static NetworkTableEntry limelightTx = limelightTable.getEntry("tx");
   public static NetworkTableEntry limelightTy = limelightTable.getEntry("ty");
   public static NetworkTableEntry limelightTa = limelightTable.getEntry("ta");
   public static NetworkTableEntry limelightTv = limelightTable.getEntry("tv");
+
   // For example to map the left and right motors, you could define the
   // following variables to use with your drivetrain subsystem.
   // public static int leftMotor = 1;
@@ -42,7 +44,11 @@ public class RobotMap {
   public static int backLeftMotorPort = 3;
   public static int backRightMotorPort = 4;
 
+  public static int frontClimberMotorPort = 6;
+  public static int rearClimberMotorPort = 7;
+
   // DIO
+  public static int climberLimitSwitchPort = 0;
 
   // CAN
 

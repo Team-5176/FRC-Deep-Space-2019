@@ -17,12 +17,12 @@ import frc.robot.commands.DriveTrainMove;
  * Add your docs here.
  */
 public class DriveTrainSubsystem extends Subsystem {
-  public static VictorSP frontLeftMotor = new VictorSP(RobotMap.frontLeftMotorPort);
-  public static VictorSP frontRightMotor = new VictorSP(RobotMap.frontRightMotorPort);
-  public static VictorSP backLeftMotor = new VictorSP(RobotMap.backLeftMotorPort);
-  public static VictorSP backRightMotor = new VictorSP(RobotMap.backRightMotorPort);
+  public VictorSP frontLeftMotor = new VictorSP(RobotMap.frontLeftMotorPort);
+  public VictorSP frontRightMotor = new VictorSP(RobotMap.frontRightMotorPort);
+  public VictorSP backLeftMotor = new VictorSP(RobotMap.backLeftMotorPort);
+  public VictorSP backRightMotor = new VictorSP(RobotMap.backRightMotorPort);
 
-  public static MecanumDrive mecanumDrive =
+  public MecanumDrive mecanumDrive =
     new MecanumDrive(frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor);
   // Put methods for controlling this subsystem
   // here. Call these from Commands.

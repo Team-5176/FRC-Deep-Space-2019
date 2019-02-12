@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import frc.robot.subsystems.Climber;
 // import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 // import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.DriveTrainSubsystem;
@@ -36,6 +37,7 @@ public class Robot extends TimedRobot {
   public static DriveTrainSubsystem literallyTheDriveTrain;
   public static PneumaticArms pneumaticArms;
   public static VacuumPumps vacuumPumps;
+  public static Climber climberSystem;
   public static OI oi;
   public static UsbCamera camera0;
   public static UsbCamera camera1;
@@ -54,6 +56,7 @@ public class Robot extends TimedRobot {
     literallyTheDriveTrain = new DriveTrainSubsystem();
     pneumaticArms = new PneumaticArms();
     vacuumPumps = new VacuumPumps();
+    climberSystem = new Climber();
 
     // chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
