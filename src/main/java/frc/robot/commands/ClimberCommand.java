@@ -55,7 +55,7 @@ public class ClimberCommand extends Command {
         
       } else {
         // panic mode == true; manual override == false.
-        Robot.climberSystem.climberFrontMotor.set(RobotMap.PANIC_CLIMB_SPEED);
+        // TODO: Robot.climberSystem.climberFrontMotor.set(RobotMap.PANIC_CLIMB_SPEED);
       }
     } else {
       // panic mode == false.
@@ -84,11 +84,14 @@ public class ClimberCommand extends Command {
       testMoveAt5 = false;
     }
     if (testMoveAt40) {
-      Robot.climberSystem.climberFrontMotor.set(0.4);
+      Robot.climberSystem.climberFrontMotor.set(-0.43);
+      Robot.climberSystem.climberRearMotor.set(-0.4);
     } else if (testMoveAt5) {
-      Robot.climberSystem.climberFrontMotor.set(RobotMap.PANIC_CLIMB_SPEED);
+      Robot.climberSystem.climberFrontMotor.set(-RobotMap.PANIC_CLIMB_SPEED_FRONT);
+      Robot.climberSystem.climberRearMotor.set(-RobotMap.PANIC_CLIMB_SPEED_REAR);
     } else {
       Robot.climberSystem.climberFrontMotor.set(0.0);
+      Robot.climberSystem.climberRearMotor.set(0.0);
     }
     // END TESTING CODE
   }

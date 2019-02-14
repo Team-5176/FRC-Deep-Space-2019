@@ -86,5 +86,7 @@ public class RobotMap {
   public static final double VISION_AUTO_SPEED = 0.3;
   public static final double VISION_PRECISION_RANGE = 1.0;
   public static final double VISION_PRECISION_SPEED = 0.2;
-  public static final double PANIC_CLIMB_SPEED = 0.1; // subject to change
+
+  public static final double PANIC_CLIMB_SPEED_FRONT = 0.13; // subject to change
+  public static final double PANIC_CLIMB_SPEED_REAR = 0.07; // subject to change
 }
