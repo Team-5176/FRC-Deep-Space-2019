@@ -76,9 +76,13 @@ public class TestMoveMotor extends Command {
     if (motorState) {
       // DriverStation.reportWarning("it is on", false);
       Robot.testSubsystem.testingMotor.set(RobotMap.vacuumSpeed); // port 0; manual control
+      Robot.testSubsystem.secondVacuum.set(RobotMap.vacuumSpeed); // port 8; manual control
+      Robot.testSubsystem.thirdVacuum.set(RobotMap.vacuumSpeed); // port 9; manual control
     } else {
       // DriverStation.reportWarning("no go", false);
       Robot.testSubsystem.testingMotor.set(0.0); // port 0; manual control
+      Robot.testSubsystem.secondVacuum.set(0.0); // port 8; manual control
+      Robot.testSubsystem.thirdVacuum.set(0.0); // port 9; manual control
     }
     lastButtonPress = currentPress;
 

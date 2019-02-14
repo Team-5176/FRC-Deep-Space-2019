@@ -29,6 +29,8 @@ public class TestingSubsystem extends Subsystem {
   // public WPI_TalonSRX rightMaster = new WPI_TalonSRX(RobotMap.rightMasterPort);
   // public WPI_TalonSRX rightSlave = new WPI_TalonSRX(RobotMap.rightSlavePort);
   public VictorSP testingMotor = new VictorSP(RobotMap.testMotorPort);
+  public VictorSP secondVacuum = new VictorSP(RobotMap.secondVacuumPort);
+  public VictorSP thirdVacuum = new VictorSP(RobotMap.thirdVacuumPort);
   public VictorSP testingMotor2 = new VictorSP(RobotMap.testMotorPort2);
 
   // public DifferentialDrive drive = new DifferentialDrive(leftMaster, rightMaster);

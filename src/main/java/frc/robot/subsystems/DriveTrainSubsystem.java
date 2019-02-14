@@ -7,7 +7,11 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.VictorSP;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
+// import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
+// import edu.wpi.first.wpilibj.VictorSP;s
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import frc.robot.RobotMap;
@@ -17,10 +21,15 @@ import frc.robot.commands.DriveTrainMove;
  * Add your docs here.
  */
 public class DriveTrainSubsystem extends Subsystem {
-  public VictorSP frontLeftMotor = new VictorSP(RobotMap.frontLeftMotorPort);
-  public VictorSP frontRightMotor = new VictorSP(RobotMap.frontRightMotorPort);
-  public VictorSP backLeftMotor = new VictorSP(RobotMap.backLeftMotorPort);
-  public VictorSP backRightMotor = new VictorSP(RobotMap.backRightMotorPort);
+  // public VictorSP frontLeftMotor = new VictorSP(RobotMap.frontLeftMotorPort);
+  // public VictorSP frontRightMotor = new VictorSP(RobotMap.frontRightMotorPort);
+  // public VictorSP backLeftMotor = new VictorSP(RobotMap.backLeftMotorPort);
+  // public VictorSP backRightMotor = new VictorSP(RobotMap.backRightMotorPort);
+
+  public WPI_VictorSPX frontLeftMotor = new WPI_VictorSPX(RobotMap.frontLeftMotorPort);
+  public WPI_VictorSPX frontRightMotor = new WPI_VictorSPX(RobotMap.frontRightMotorPort);
+  public WPI_VictorSPX backLeftMotor = new WPI_VictorSPX(RobotMap.backLeftMotorPort);
+  public WPI_VictorSPX backRightMotor = new WPI_VictorSPX(RobotMap.backRightMotorPort);
 
   public MecanumDrive mecanumDrive =
     new MecanumDrive(frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor);

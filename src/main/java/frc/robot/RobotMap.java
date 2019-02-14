@@ -36,13 +36,20 @@ public class RobotMap {
   // public static int rangefinderModule = 1;
 
   // PWM
-  public static int testMotorPort = 0;
+  public static int testMotorPort = 0; // we are putting a vacuum pump on this port
+  public static int secondVacuumPort = 8;
+  public static int thirdVacuumPort = 9;
   public static int testMotorPort2 = 5;
 
   public static int frontLeftMotorPort = 1;
   public static int frontRightMotorPort = 2;
   public static int backLeftMotorPort = 3;
   public static int backRightMotorPort = 4;
+
+  public static int frontLeftCANMotorPort = 2;
+  public static int frontRightCANMotorPort = 3;
+  public static int backLeftCANMotorPort = 4;
+  public static int backRightCANMotorPort = 5;
 
   public static int frontClimberMotorPort = 6;
   public static int rearClimberMotorPort = 7;
