@@ -26,10 +26,10 @@ public class DriveTrainSubsystem extends Subsystem {
   // public VictorSP backLeftMotor = new VictorSP(RobotMap.backLeftMotorPort);
   // public VictorSP backRightMotor = new VictorSP(RobotMap.backRightMotorPort);
 
-  public WPI_VictorSPX frontLeftMotor = new WPI_VictorSPX(RobotMap.frontLeftMotorPort);
-  public WPI_VictorSPX frontRightMotor = new WPI_VictorSPX(RobotMap.frontRightMotorPort);
-  public WPI_VictorSPX backLeftMotor = new WPI_VictorSPX(RobotMap.backLeftMotorPort);
-  public WPI_VictorSPX backRightMotor = new WPI_VictorSPX(RobotMap.backRightMotorPort);
+  public WPI_VictorSPX frontLeftMotor = new WPI_VictorSPX(RobotMap.frontLeftCANMotorPort);
+  public WPI_VictorSPX frontRightMotor = new WPI_VictorSPX(RobotMap.frontRightCANMotorPort);
+  public WPI_VictorSPX backLeftMotor = new WPI_VictorSPX(RobotMap.backLeftCANMotorPort);
+  public WPI_VictorSPX backRightMotor = new WPI_VictorSPX(RobotMap.backRightCANMotorPort);
 
   public MecanumDrive mecanumDrive =
     new MecanumDrive(frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor);
