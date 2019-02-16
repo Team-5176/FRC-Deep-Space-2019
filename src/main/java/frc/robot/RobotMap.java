@@ -76,8 +76,8 @@ public class RobotMap {
   // Begin pilotJoystick mappings
   public static int motorToggleButton = 2; // A
   public static int secondToggleButton = 1; // X
-  public static int pneumaticToggleButton = 4; // Y
-  public static int pneumaticToggleButton2 = 3; // B
+  public static int vacuumToggleButton = 4; // Y
+  public static int pneumaticArmToggleButton = 3; // B
   // End pilotJoystick mappings
 
   // Begin coPilotJoystick mappings
@@ -96,4 +96,14 @@ public class RobotMap {
 
   public static final double PANIC_CLIMB_SPEED_FRONT = 0.13; // subject to change
   public static final double PANIC_CLIMB_SPEED_REAR = 0.07; // subject to change
+
+  // PCM
+  public static final int VACUUM_SOLENOID_0_A = 7;
+  public static final int VACUUM_SOLENOID_0_B = 0;
+  public static final int VACUUM_SOLENOID_1_A = 6;
+  public static final int VACUUM_SOLENOID_1_B = 1;
+  public static final int VACUUM_SOLENOID_2_A = 5;
+  public static final int VACUUM_SOLENOID_2_B = 2;
+  public static final int ARM_SOLENOID_0_A = 4;
+  public static final int ARM_SOLENOID_0_B = 3;
 }

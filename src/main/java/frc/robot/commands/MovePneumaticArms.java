@@ -37,7 +37,7 @@ public class MovePneumaticArms extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    boolean currentPress = Robot.oi.pilotJoystick.getRawButton(RobotMap.pneumaticToggleButton);
+    boolean currentPress = Robot.oi.pilotJoystick.getRawButton(RobotMap.vacuumToggleButton);
     boolean isDifferenceBetweenPresses = !(currentPress == lastButtonPress);
 
     if (isDifferenceBetweenPresses) {
@@ -49,22 +49,36 @@ public class MovePneumaticArms extends Command {
     }
 
     if (state) {
-      Robot.pneumaticArms.setSolenoid0(false);
-      Robot.pneumaticArms.setSolenoid1(true);
+      // Robot.pneumaticArms.setSolenoid0(false);
+      // Robot.pneumaticArms.setSolenoid1(true);
 
-      Robot.pneumaticArms.setSolenoid6(false);
-      Robot.pneumaticArms.setSolenoid7(true);
+      // Robot.pneumaticArms.setSolenoid6(false);
+      // Robot.pneumaticArms.setSolenoid7(true);
+
+      Robot.pneumaticArms.setVacuumSolenoid0A(true);
+      Robot.pneumaticArms.setVacuumSolenoid0B(false);
+      Robot.pneumaticArms.setVacuumSolenoid1A(true);
+      Robot.pneumaticArms.setVacuumSolenoid1B(false);
+      Robot.pneumaticArms.setVacuumSolenoid2A(true);
+      Robot.pneumaticArms.setVacuumSolenoid2B(false);
     } else {
-      Robot.pneumaticArms.setSolenoid0(true);
-      Robot.pneumaticArms.setSolenoid1(false);
+      // Robot.pneumaticArms.setSolenoid0(true);
+      // Robot.pneumaticArms.setSolenoid1(false);
 
-      Robot.pneumaticArms.setSolenoid6(true);
-      Robot.pneumaticArms.setSolenoid7(false);
+      // Robot.pneumaticArms.setSolenoid6(true);
+      // Robot.pneumaticArms.setSolenoid7(false);
+
+      Robot.pneumaticArms.setVacuumSolenoid0A(false);
+      Robot.pneumaticArms.setVacuumSolenoid0B(true);
+      Robot.pneumaticArms.setVacuumSolenoid1A(false);
+      Robot.pneumaticArms.setVacuumSolenoid1B(true);
+      Robot.pneumaticArms.setVacuumSolenoid2A(false);
+      Robot.pneumaticArms.setVacuumSolenoid2B(true);
     }
     lastButtonPress = currentPress;
 
 
-    boolean currentPress2 = Robot.oi.pilotJoystick.getRawButton(RobotMap.pneumaticToggleButton2);
+    boolean currentPress2 = Robot.oi.pilotJoystick.getRawButton(RobotMap.pneumaticArmToggleButton);
     boolean isDifferenceBetweenPresses2 = !(currentPress2 == lastButtonPress2);
 
     if (isDifferenceBetweenPresses2) {
@@ -76,11 +90,15 @@ public class MovePneumaticArms extends Command {
     }
 
     if (state2) {
-      Robot.pneumaticArms.setSolenoid2(false);
-      Robot.pneumaticArms.setSolenoid3(true);
+      // Robot.pneumaticArms.setSolenoid2(false);
+      // Robot.pneumaticArms.setSolenoid3(true);
+      Robot.pneumaticArms.setArmSolenoid0A(true);
+      Robot.pneumaticArms.setArmSolenoid0B(false);
     } else {
-      Robot.pneumaticArms.setSolenoid2(true);
-      Robot.pneumaticArms.setSolenoid3(false);
+      // Robot.pneumaticArms.setSolenoid2(true);
+      // Robot.pneumaticArms.setSolenoid3(false);
+      Robot.pneumaticArms.setArmSolenoid0A(false);
+      Robot.pneumaticArms.setArmSolenoid0B(true);
     }
     lastButtonPress2 = currentPress2;
   }
