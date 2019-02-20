@@ -84,6 +84,8 @@ public class RobotMap {
   public static final int LOGITECH_B = 2;
   public static final int LOGITECH_X = 3;
   public static final int LOGITECH_Y = 4;
+  public static final int LOGITECH_LB = 5;
+  public static final int LOGITECH_RB = 6;
   
   // Begin pilotJoystick mappings
   public static final int VACUUM_TOGGLE_BUTTON = LOGITECH_A; // A

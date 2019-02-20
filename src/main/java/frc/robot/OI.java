@@ -26,9 +26,10 @@ public class OI { // means operator input
   public Joystick coPilotJoystick = new Joystick(RobotMap.coPilotJoystickPort);
 
   public Button climbSequenceButton = new JoystickButton(coPilotJoystick, 8);
-
+  
   public OI() {
-    climbSequenceButton.whenPressed(new ClimberSequence());
+    // TODO: THIS IS WHERE WE ENABLE/DISABLE THE BUTTON FOR THE CLIMB SEQUENCE
+    // climbSequenceButton.whenPressed(new ClimberSequence());
   }
 
   // Button button = new JoystickButton(stick, buttonNumber);

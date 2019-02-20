@@ -62,7 +62,8 @@ public class DriveTrainMove extends Command {
     // double limeA = RobotMap.limelightTa.getDouble(0.0);
     boolean limeHasTarget = RobotMap.limelightTv.getDouble(0.0) == 1;
 
-    boolean currentPress2 = Robot.oi.pilotJoystick.getRawButton(RobotMap.VISION_TOGGLE_BUTTON);
+    // boolean currentPress2 = Robot.oi.pilotJoystick.getRawButton(RobotMap.VISION_TOGGLE_BUTTON);
+    boolean currentPress2 = Robot.oi.coPilotJoystick.getRawButton(RobotMap.LOGITECH_Y);
     boolean isDifferenceBetweenPresses2 = !(currentPress2 == lastButtonPress2);
 
     if (isDifferenceBetweenPresses2) {

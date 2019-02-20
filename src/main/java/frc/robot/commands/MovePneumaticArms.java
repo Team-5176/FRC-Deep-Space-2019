@@ -41,7 +41,8 @@ public class MovePneumaticArms extends Command {
   protected void execute() {
     SmartDashboard.putNumber("PSI", RobotMap.literallyTheCompressor.getCompressorCurrent());
 
-    boolean currentPress = Robot.oi.pilotJoystick.getRawButton(RobotMap.VACUUM_SOLENOID_BUTTON);
+    // boolean currentPress = Robot.oi.pilotJoystick.getRawButton(RobotMap.VACUUM_SOLENOID_BUTTON);
+    boolean currentPress = Robot.oi.coPilotJoystick.getRawButton(RobotMap.LOGITECH_B);
     boolean isDifferenceBetweenPresses = !(currentPress == lastButtonPress);
 
     if (isDifferenceBetweenPresses) {
@@ -82,7 +83,8 @@ public class MovePneumaticArms extends Command {
     lastButtonPress = currentPress;
 
 
-    boolean currentPress2 = Robot.oi.pilotJoystick.getRawButton(RobotMap.PNEUMATIC_ARM_TOGGLE_BUTTON);
+    // boolean currentPress2 = Robot.oi.pilotJoystick.getRawButton(RobotMap.PNEUMATIC_ARM_TOGGLE_BUTTON);
+    boolean currentPress2 = Robot.oi.coPilotJoystick.getRawButton(RobotMap.LOGITECH_X);
     boolean isDifferenceBetweenPresses2 = !(currentPress2 == lastButtonPress2);
 
     if (isDifferenceBetweenPresses2) {

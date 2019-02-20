@@ -72,7 +72,8 @@ public class TestMoveMotor extends Command {
     // Robot.testSubsystem.testingMotor.set(0.3); // manual, port 0
     // Robot.testSubsystem.setSpeed2(1); // port 5
     
-    boolean currentPress = Robot.oi.pilotJoystick.getRawButton(RobotMap.VACUUM_TOGGLE_BUTTON);
+    // boolean currentPress = Robot.oi.pilotJoystick.getRawButton(RobotMap.VACUUM_TOGGLE_BUTTON);
+    boolean currentPress = Robot.oi.coPilotJoystick.getRawButton(RobotMap.LOGITECH_A);
     boolean isDifferenceBetweenPresses = !(currentPress == lastButtonPress);
 
 
