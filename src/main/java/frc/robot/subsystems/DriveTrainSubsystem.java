@@ -13,7 +13,11 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 // import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.drive.MecanumDrive;
+
+// import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import frc.robot.misc.MecanumDriveCustom5176;
+
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 import frc.robot.commands.DriveTrainMove;
 
@@ -31,8 +35,8 @@ public class DriveTrainSubsystem extends Subsystem {
   public WPI_VictorSPX backLeftMotor = new WPI_VictorSPX(RobotMap.backLeftCANMotorPort);
   public WPI_VictorSPX backRightMotor = new WPI_VictorSPX(RobotMap.backRightCANMotorPort);
 
-  public MecanumDrive mecanumDrive =
-    new MecanumDrive(frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor);
+  private MecanumDriveCustom5176 mecanumDrive =
+    new MecanumDriveCustom5176(frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor);
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
@@ -65,6 +69,34 @@ public class DriveTrainSubsystem extends Subsystem {
 
     mecanumDrive.driveCartesian(joyY, joyX, joyZ);
     // mecanumDrive.driveCartesian(1.0, 1.0, 1.0); // only for the memes :D
+    // DEBUG:
+    SmartDashboard.putNumber("FL", frontLeftMotor.get());
+    SmartDashboard.putNumber("FR", frontRightMotor.get());
+    SmartDashboard.putNumber("BL", backLeftMotor.get());
+    SmartDashboard.putNumber("BR", backRightMotor.get());
+  }
+
+  public void setSpeedFrontMotorsOnly(double speed) {
+    
+    // if (speed < 0.1 && speed > -0.1) {
+    //   speed = 0;
+    // }
+
+    // if (speed > RobotMap.maxSpeed) {
+    //   speed = RobotMap.maxSpeed;
+    // }
+
+    // if (speed < -RobotMap.maxSpeed) {
+    //   speed = -RobotMap.maxSpeed;
+    // }
+
+    // // drive.arcadeDrive(move, turn);
+    // frontLeftMotor.set(speed);
+    // frontRightMotor.set(speed);
+    // testingMotor.set(1); // only for the memes :D
+    // DriverStation.reportWarning("get: " + testingMotor.get() + "", false);
+
+    mecanumDrive.setFrontMotorsOnly(speed);
   }
 
   @Override

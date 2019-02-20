@@ -22,14 +22,39 @@ public class ClimberCommand extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    panicModeFront = false;
+    panicModeRear = false;
+  
+    // TODO THE FOLLOWING TESTING CODE WILL NEED TO BE REMOVED LATER
+    testMoveFrontAt40 = false;
+    testMoveFrontAt5 = false;
+    testMoveRearAt40 = false;
+    testMoveRearAt5 = false;
+  
+    stillMoveAutoFront = true;
+    manualMoveFront = 0.0;
+    stillMoveAutoRear = true;
+    manualMoveRear = 0.0;
+
+    amIDoingTheClimb = false;
+    // END TESTING CODE
   }
 
   public boolean panicModeFront = false;
   public boolean panicModeRear = false;
 
   // TODO THE FOLLOWING TESTING CODE WILL NEED TO BE REMOVED LATER
-  boolean testMoveAt40 = false;
-  boolean testMoveAt5 = false;
+  boolean testMoveFrontAt40 = false;
+  boolean testMoveFrontAt5 = false;
+  boolean testMoveRearAt40 = false;
+  boolean testMoveRearAt5 = false;
+
+  boolean stillMoveAutoFront = true;
+  double manualMoveFront = 0.0;
+  boolean stillMoveAutoRear = true;
+  double manualMoveRear = 0.0;
+
+  boolean amIDoingTheClimb = false;
   // END TESTING CODE
 
   // Called repeatedly when this Command is scheduled to run
@@ -73,24 +98,91 @@ public class ClimberCommand extends Command {
     }
 
     // TODO THE FOLLOWING TESTING CODE WILL NEED TO BE REMOVED LATER
-    if (Robot.oi.coPilotJoystick.getRawButton(2)) { // A
-      testMoveAt40 = true;
-      testMoveAt5 = false;
-    } else if (Robot.oi.coPilotJoystick.getRawButton(4)) { // Y
-      testMoveAt40 = false;
-      testMoveAt5 = true;
-    } else if (Robot.oi.coPilotJoystick.getRawButton(3)) { // B
-      testMoveAt40 = false;
-      testMoveAt5 = false;
+    if (Robot.oi.coPilotJoystick.getRawButton(RobotMap.LOGITECH_A)) { // A
+      testMoveFrontAt40 = true;
+      testMoveFrontAt5 = false;
+      testMoveRearAt40 = true;
+      testMoveRearAt5 = false;
+    } else if (Robot.oi.coPilotJoystick.getRawButton(RobotMap.LOGITECH_Y)) { // Y
+      testMoveFrontAt40 = false;
+      testMoveFrontAt5 = true;
+      testMoveRearAt40 = false;
+      testMoveRearAt5 = true;
+    } else if (Robot.oi.coPilotJoystick.getRawButton(RobotMap.LOGITECH_B)) { // B
+      testMoveFrontAt40 = false;
+      testMoveFrontAt5 = false;
+      testMoveRearAt40 = false;
+      testMoveRearAt5 = false;
     }
-    if (testMoveAt40) {
-      Robot.climberSystem.climberFrontMotor.set(-0.43);
-      Robot.climberSystem.climberRearMotor.set(-0.4);
-    } else if (testMoveAt5) {
-      Robot.climberSystem.climberFrontMotor.set(-RobotMap.PANIC_CLIMB_SPEED_FRONT);
-      Robot.climberSystem.climberRearMotor.set(-RobotMap.PANIC_CLIMB_SPEED_REAR);
-    } else {
+
+    if (Robot.oi.pilotJoystick.getRawButton(5)) {
+      
+    }
+
+    // Code for the front boi
+    if (testMoveFrontAt40) {
+      if (!Robot.climberSystem.limitSwitchFront.get()) {
+      // if (false) {
+        // the limit switch is hit
+        testMoveFrontAt40 = false;
+        testMoveFrontAt5 = true;
+      } else {
+        Robot.climberSystem.climberFrontMotor.set(-RobotMap.GO_CLIMB_SPEED_FRONT); 
+      }
+      // Robot.climberSystem.climberRearMotor.set(-RobotMap.GO_CLIMB_SPEED_REAR);
+    }
+    if (testMoveFrontAt5) {
+      // first check for the joystick. if it is nothing, do the panic speed
+      double currentCoPilotFrontRawAxis = Robot.oi.coPilotJoystick.getRawAxis(2); // left trigger
+      if (currentCoPilotFrontRawAxis < 0.1) {
+        manualMoveFront = 0.0;
+      } else {
+        manualMoveFront = currentCoPilotFrontRawAxis;
+        stillMoveAutoFront = false;
+      }
+      if (stillMoveAutoFront) {
+        Robot.climberSystem.climberFrontMotor.set(-RobotMap.PANIC_CLIMB_SPEED_FRONT);
+      } else {
+        Robot.climberSystem.climberFrontMotor.set(currentCoPilotFrontRawAxis);
+      }
+      // Robot.climberSystem.climberRearMotor.set(-RobotMap.PANIC_CLIMB_SPEED_REAR);
+    }
+    if (!testMoveFrontAt40 && !testMoveFrontAt5) {
       Robot.climberSystem.climberFrontMotor.set(0.0);
+      // Robot.climberSystem.climberRearMotor.set(0.0);
+    }
+
+    // Code for the rear boi
+    if (testMoveRearAt40) {
+      // Robot.climberSystem.climberFrontMotor.set(-RobotMap.GO_CLIMB_SPEED_FRONT); 
+      if (!Robot.climberSystem.limitSwitchRear.get()) {
+      // if (false) {
+        // the limit switch is hit
+        testMoveRearAt40 = false;
+        testMoveRearAt5 = true;
+      } else {
+        Robot.climberSystem.climberRearMotor.set(-RobotMap.GO_CLIMB_SPEED_REAR);
+      }
+    }
+    if (testMoveRearAt5) {
+      // first check for the joystick. if it is nothing, do the panic speed
+      double currentCoPilotRearRawAxis = Robot.oi.coPilotJoystick.getRawAxis(3); // right trigger
+      if (currentCoPilotRearRawAxis < 0.1) {
+        manualMoveRear = 0.0;
+      } else {
+        manualMoveRear = currentCoPilotRearRawAxis;
+        stillMoveAutoRear = false;
+      }
+      if (stillMoveAutoRear) {
+        Robot.climberSystem.climberRearMotor.set(-RobotMap.PANIC_CLIMB_SPEED_REAR);
+      } else {
+        Robot.climberSystem.climberRearMotor.set(currentCoPilotRearRawAxis);
+      }
+      // Robot.climberSystem.climberFrontMotor.set(-RobotMap.PANIC_CLIMB_SPEED_FRONT);
+      // Robot.climberSystem.climberRearMotor.set(-RobotMap.PANIC_CLIMB_SPEED_REAR);
+    }
+    if (!testMoveRearAt40 && !testMoveRearAt5) {
+      // Robot.climberSystem.climberFrontMotor.set(0.0);
       Robot.climberSystem.climberRearMotor.set(0.0);
     }
     // END TESTING CODE

@@ -1,0 +1,10 @@
+//check math on ultrasonics
+push button and loop following
+{
+ultrasonic <= 4in
+lower legs until limit switch is hit
+drive forward until ultrasonic <= 45in
+raise front leg 
+drive back leg and front drive train until ultrasonic <= 12in
+raise back legs
+}

@@ -49,19 +49,30 @@ public class TestMoveMotor extends Command {
     SmartDashboard.putBoolean("LimelightHas", limeHasTarget);
     // end limelight testing code
     
-    double move = -Robot.oi.coPilotJoystick.getY();
+    // double move = -Robot.oi.coPilotJoystick.getY();
+    double move = -Robot.oi.coPilotJoystick.getRawAxis(1);
+
+    double move3 = -Robot.oi.coPilotJoystick.getRawAxis(5);
+
+    if (move3 > 0.1) {
+      DriveTrainMove.shouldIDrive = false;
+      Robot.testSubsystem.setSpeed2(move3);
+      Robot.literallyTheDriveTrain.setSpeedFrontMotorsOnly(move3 * 0.20);
+    } else {
+      Robot.testSubsystem.setSpeed2(move);
+      DriveTrainMove.shouldIDrive = true;
+    }
 
     // 3 is the Z rotate axis
     // double move1 = -Robot.oi.coPilotJoystick.getRawAxis(3);
     // DriverStation.reportWarning(Robot.oi.pilotJoystick.getY() + "", false);
-    Robot.testSubsystem.setSpeed2(move);
     // Robot.testSubsystem.setSpeed(move);
     // Robot.testSubsystem.setSpeed(move1);
     // Robot.testSubsystem.setSpeed(0.11); // port 0
     // Robot.testSubsystem.testingMotor.set(0.3); // manual, port 0
     // Robot.testSubsystem.setSpeed2(1); // port 5
     
-    boolean currentPress = Robot.oi.pilotJoystick.getRawButton(RobotMap.motorToggleButton);
+    boolean currentPress = Robot.oi.pilotJoystick.getRawButton(RobotMap.VACUUM_TOGGLE_BUTTON);
     boolean isDifferenceBetweenPresses = !(currentPress == lastButtonPress);
 
 

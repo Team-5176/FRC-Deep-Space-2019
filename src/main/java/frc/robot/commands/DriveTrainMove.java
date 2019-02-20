@@ -23,6 +23,7 @@ public class DriveTrainMove extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    shouldIDrive = true;
   }
 
   // for vision toggle button
@@ -30,15 +31,30 @@ public class DriveTrainMove extends Command {
   boolean state2 = false;
   int differenceCounter2 = 0;
 
+  public static boolean shouldIDrive = true;
+
   // Called repeatedly when this Command is scheduled to run
   @Override
     protected void execute() {
+    double pilotRawAxis0 = Robot.oi.pilotJoystick.getRawAxis(0);
     // the meat boi
-    double joyX = -Robot.oi.pilotJoystick.getX() * 0.8;
-    double joyY = Robot.oi.pilotJoystick.getY() * 0.5;
-    double joyZ = -Robot.oi.pilotJoystick.getZ() * 0.5;
+    // double joyX = -Robot.oi.pilotJoystick.getX() * 0.8;
+    double joyX = -pilotRawAxis0 * 0.8; // old x axis; left stick left to right
+    // double joyY = Robot.oi.pilotJoystick.getY() * 0.5;
+    double joyY = Robot.oi.pilotJoystick.getRawAxis(1) * 0.5; // old y axis; left stick up to down
+    // double joyZ = -Robot.oi.pilotJoystick.getZ() * 0.5;
+    double joyZ = -Robot.oi.pilotJoystick.getRawAxis(4) * 0.5; // old z axis; right stick left to right
 
-    Robot.literallyTheDriveTrain.moveMecanumDrive(joyY, joyX, joyZ);
+    SmartDashboard.putNumber("joyX", joyX);
+    SmartDashboard.putNumber("joyZ", joyZ);
+
+    if (pilotRawAxis0 > 0.5) {
+      joyZ = RobotMap.MECANUM_FIX_RIGHT_THING;
+    }
+
+    if (shouldIDrive) {
+      Robot.literallyTheDriveTrain.moveMecanumDrive(joyY, joyX, joyZ);
+    }
     // DriverStation.reportWarning("moving: " + joyY + " " + joyX + " " + joyZ, false);
 
     double limeX = RobotMap.limelightTx.getDouble(0.0);
@@ -46,7 +62,7 @@ public class DriveTrainMove extends Command {
     // double limeA = RobotMap.limelightTa.getDouble(0.0);
     boolean limeHasTarget = RobotMap.limelightTv.getDouble(0.0) == 1;
 
-    boolean currentPress2 = Robot.oi.pilotJoystick.getRawButton(RobotMap.secondToggleButton);
+    boolean currentPress2 = Robot.oi.pilotJoystick.getRawButton(RobotMap.VISION_TOGGLE_BUTTON);
     boolean isDifferenceBetweenPresses2 = !(currentPress2 == lastButtonPress2);
 
     if (isDifferenceBetweenPresses2) {
@@ -87,6 +103,8 @@ public class DriveTrainMove extends Command {
       SmartDashboard.putBoolean("VisionOn", false);
     }
     lastButtonPress2 = currentPress2;
+
+    SmartDashboard.putNumber("ult", RobotMap.ultrasonicBoi.getVoltage());
   }
 
   // Make this return true when this Command no longer needs to run execute()

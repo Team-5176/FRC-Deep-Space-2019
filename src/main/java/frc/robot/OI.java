@@ -8,6 +8,9 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.ClimberSequence;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -21,6 +24,13 @@ public class OI { // means operator input
   // number it is.
   public Joystick pilotJoystick = new Joystick(RobotMap.joystickPort);
   public Joystick coPilotJoystick = new Joystick(RobotMap.coPilotJoystickPort);
+
+  public Button climbSequenceButton = new JoystickButton(coPilotJoystick, 8);
+
+  public OI() {
+    climbSequenceButton.whenPressed(new ClimberSequence());
+  }
+
   // Button button = new JoystickButton(stick, buttonNumber);
 
   // There are a few additional built in buttons you can use. Additionally,

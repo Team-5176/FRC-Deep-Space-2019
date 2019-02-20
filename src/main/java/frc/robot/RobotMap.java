@@ -10,6 +10,9 @@ package frc.robot;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.Ultrasonic;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -25,6 +28,10 @@ public class RobotMap {
   public static NetworkTableEntry limelightTa = limelightTable.getEntry("ta");
   public static NetworkTableEntry limelightTv = limelightTable.getEntry("tv");
 
+  public static Compressor literallyTheCompressor = new Compressor(0);
+
+  public static AnalogInput ultrasonicBoi = new AnalogInput(0);
+ 
   // For example to map the left and right motors, you could define the
   // following variables to use with your drivetrain subsystem.
   // public static int leftMotor = 1;
@@ -56,7 +63,7 @@ public class RobotMap {
 
   // DIO
   public static int climberFrontLimitSwitchPort = 0;
-  public static int climberRearLimitSwitchPort = 1;
+  public static int climberRearLimitSwitchPort = 9;
 
   // CAN
 
@@ -67,22 +74,27 @@ public class RobotMap {
   public static int camera0Port = 0;
   public static int camera1Port = 1;
 
-  // LOGITECH CONTROLLER MAP:
+  // LOGITECH CONTROLLER MAP: (this is old and not accurate)
   // 1:X
   // 2:A
   // 3:B
   // 4:Y
+  // NEW ACCURATE LOGITECH MAP (set to X)
+  public static final int LOGITECH_A = 1;
+  public static final int LOGITECH_B = 2;
+  public static final int LOGITECH_X = 3;
+  public static final int LOGITECH_Y = 4;
   
   // Begin pilotJoystick mappings
-  public static int motorToggleButton = 2; // A
-  public static int secondToggleButton = 1; // X
-  public static int vacuumToggleButton = 4; // Y
-  public static int pneumaticArmToggleButton = 3; // B
+  public static final int VACUUM_TOGGLE_BUTTON = LOGITECH_A; // A
+  public static final int VISION_TOGGLE_BUTTON = LOGITECH_X; // X
+  public static final int VACUUM_SOLENOID_BUTTON = LOGITECH_Y; // Y
+  public static final int PNEUMATIC_ARM_TOGGLE_BUTTON = LOGITECH_B; // B
   // End pilotJoystick mappings
 
   // Begin coPilotJoystick mappings
-  public static int manualRearClimbOverride = 1; // X
-  public static int manualFrontClimbOverride = 2; // A
+  public static int manualRearClimbOverride = LOGITECH_X; // X
+  public static int manualFrontClimbOverride = LOGITECH_A; // A
   // End coPilotJoystick mappings
 
   // Other Drivetrain Constants
@@ -94,8 +106,20 @@ public class RobotMap {
   public static final double VISION_PRECISION_RANGE = 1.0;
   public static final double VISION_PRECISION_SPEED = 0.2;
 
-  public static final double PANIC_CLIMB_SPEED_FRONT = 0.13; // subject to change
-  public static final double PANIC_CLIMB_SPEED_REAR = 0.07; // subject to change
+  // public static final double PANIC_CLIMB_SPEED_FRONT = 0.15; // subject to change
+  // public static final double PANIC_CLIMB_SPEED_REAR = 0.08; // subject to change
+  // // public static final double GO_CLIMB_SPEED_FRONT = 0.50;
+  // // public static final double GO_CLIMB_SPEED_REAR = 0.455;
+  // public static final double GO_CLIMB_SPEED_FRONT = 0.35;
+  // public static final double GO_CLIMB_SPEED_REAR = 0.30;
+
+  // for testing
+  public static final double PANIC_CLIMB_SPEED_FRONT = 0.15; // subject to change
+  public static final double PANIC_CLIMB_SPEED_REAR = 0.08; // subject to change
+  // public static final double GO_CLIMB_SPEED_FRONT = 0.50;
+  // public static final double GO_CLIMB_SPEED_REAR = 0.455;
+  public static final double GO_CLIMB_SPEED_FRONT = 0.25;
+  public static final double GO_CLIMB_SPEED_REAR = 0.20;
 
   // PCM
   public static final int VACUUM_SOLENOID_0_A = 7;
@@ -106,4 +130,12 @@ public class RobotMap {
   public static final int VACUUM_SOLENOID_2_B = 2;
   public static final int ARM_SOLENOID_0_A = 4;
   public static final int ARM_SOLENOID_0_B = 3;
+
+  // The following is the constants to modify the custom MecanumDrive class
+  public static final double MECANUM_FRONT_LEFT_MULTIPLIER = 1.0;
+  public static final double MECANUM_FRONT_RIGHT_MULTIPLIER = 1.0;
+  public static final double MECANUM_REAR_LEFT_MULTIPLIER = 1.0;
+  public static final double MECANUM_REAR_RIGHT_MULTIPLIER = 0.75;
+
+  public static final double MECANUM_FIX_RIGHT_THING = -0.04;
 }

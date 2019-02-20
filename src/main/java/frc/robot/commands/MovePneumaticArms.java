@@ -7,7 +7,9 @@
 
 package frc.robot.commands;
 
+// import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
@@ -37,7 +39,9 @@ public class MovePneumaticArms extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    boolean currentPress = Robot.oi.pilotJoystick.getRawButton(RobotMap.vacuumToggleButton);
+    SmartDashboard.putNumber("PSI", RobotMap.literallyTheCompressor.getCompressorCurrent());
+
+    boolean currentPress = Robot.oi.pilotJoystick.getRawButton(RobotMap.VACUUM_SOLENOID_BUTTON);
     boolean isDifferenceBetweenPresses = !(currentPress == lastButtonPress);
 
     if (isDifferenceBetweenPresses) {
@@ -78,7 +82,7 @@ public class MovePneumaticArms extends Command {
     lastButtonPress = currentPress;
 
 
-    boolean currentPress2 = Robot.oi.pilotJoystick.getRawButton(RobotMap.pneumaticArmToggleButton);
+    boolean currentPress2 = Robot.oi.pilotJoystick.getRawButton(RobotMap.PNEUMATIC_ARM_TOGGLE_BUTTON);
     boolean isDifferenceBetweenPresses2 = !(currentPress2 == lastButtonPress2);
 
     if (isDifferenceBetweenPresses2) {

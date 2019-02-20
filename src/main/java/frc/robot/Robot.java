@@ -51,13 +51,14 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    oi = new OI();
     testSubsystem = new TestingSubsystem();
     literallyTheDriveTrain = new DriveTrainSubsystem();
     pneumaticArms = new PneumaticArms();
     vacuumPumps = new VacuumPumps();
     climberSystem = new Climber();
-
+    
+    oi = new OI();
+    
     // chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     // SmartDashboard.putData("Auto mode", chooser);
