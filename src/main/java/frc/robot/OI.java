@@ -24,6 +24,7 @@ public class OI { // means operator input
   // number it is.
   public Joystick pilotJoystick = new Joystick(RobotMap.joystickPort);
   public Joystick coPilotJoystick = new Joystick(RobotMap.coPilotJoystickPort);
+  public Joystick buttonBoard = new Joystick(RobotMap.buttonBoardPort);
 
   public Button climbSequenceButton = new JoystickButton(coPilotJoystick, 8);
   

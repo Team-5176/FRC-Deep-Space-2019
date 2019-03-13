@@ -70,6 +70,7 @@ public class RobotMap {
   // USB
   public static int joystickPort = 0;
   public static int coPilotJoystickPort = 1;
+  public static int buttonBoardPort = 3;
 
   public static int camera0Port = 0;
   public static int camera1Port = 1;
@@ -102,7 +103,9 @@ public class RobotMap {
   // Other Drivetrain Constants
   public static double maxSpeed = 1;
   public static final double MAX_DRIVE_SPEED =1;// 0.6;
-  public static double vacuumSpeed = 0.2;
+  public static final double vacuumSpeed = 0.4; // testing for matt
+  // public static double vacuumSpeed = 0.2; // production value
+  // public static double vacuumSpeed = 1.0; // for testing with chinese motors
   public static final double VISION_RANGE = 3.0;
   public static final double VISION_AUTO_SPEED = 0.3;
   public static final double VISION_PRECISION_RANGE = 1.0;

@@ -25,6 +25,10 @@ public class TestMoveMotor extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    // for vacuum toggle button
+    lastButtonPress = true;
+    motorState = false;
+    differenceCounter = 0;
   }
 
   // for vacuum toggle button

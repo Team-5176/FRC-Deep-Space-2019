@@ -23,6 +23,15 @@ public class MovePneumaticArms extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    // for pneumatic toggle button
+    lastButtonPress = true;
+    state = false;
+    differenceCounter = 0;
+
+    // for pneumatic toggle button 2
+    lastButtonPress2 = true;
+    state2 = false;
+    differenceCounter2 = 0;
   }
 
   // for pneumatic toggle button
@@ -42,7 +51,7 @@ public class MovePneumaticArms extends Command {
     SmartDashboard.putNumber("PSI", RobotMap.literallyTheCompressor.getCompressorCurrent());
 
     // boolean currentPress = Robot.oi.pilotJoystick.getRawButton(RobotMap.VACUUM_SOLENOID_BUTTON);
-    boolean currentPress = Robot.oi.coPilotJoystick.getRawButton(RobotMap.LOGITECH_B);
+    boolean currentPress = Robot.oi.coPilotJoystick.getRawButton(RobotMap.LOGITECH_A);
     boolean isDifferenceBetweenPresses = !(currentPress == lastButtonPress);
 
     if (isDifferenceBetweenPresses) {
