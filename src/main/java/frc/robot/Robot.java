@@ -65,11 +65,13 @@ public class Robot extends TimedRobot {
 
     camera0 = CameraServer.getInstance().startAutomaticCapture(RobotMap.camera0Port);
     // camera0.setResolution(640, 360);
-    camera0.setVideoMode(VideoMode.PixelFormat.kMJPEG, 640, 360, 60);
+    camera0.setVideoMode(VideoMode.PixelFormat.kMJPEG, 320, 180, 60);
+    camera0.setBrightness(50);
 
     camera1 = CameraServer.getInstance().startAutomaticCapture(RobotMap.camera1Port);
     // camera1.setResolution(640, 360);
-    camera1.setVideoMode(VideoMode.PixelFormat.kMJPEG, 640, 360, 60);
+    camera1.setVideoMode(VideoMode.PixelFormat.kMJPEG, 320, 180, 60);
+    camera1.setBrightness(50);
   }
 
   /**
