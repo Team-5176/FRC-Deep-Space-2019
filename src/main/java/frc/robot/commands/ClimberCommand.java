@@ -27,6 +27,7 @@ public class ClimberCommand extends Command {
     panicModeRear = false;
   
     // TODO THE FOLLOWING TESTING CODE WILL NEED TO BE REMOVED LATER
+    // lol
     testMoveFrontAt40 = false;
     testMoveFrontAt5 = false;
     testMoveRearAt40 = false;
@@ -132,7 +133,7 @@ public class ClimberCommand extends Command {
       
     // }
 
-    if (Robot.oi.pilotJoystick.getRawButton(RobotMap.LOGITECH_LB)) {
+    if (Robot.oi.coPilotJoystick.getRawButton(RobotMap.LOGITECH_LB)) {
       // once you push either LB or RB, the climb cant be reversed
       amIDoingTheClimbFront = true;
 
@@ -141,7 +142,7 @@ public class ClimberCommand extends Command {
       testMoveFrontAt40 = false;
     }
 
-    if (Robot.oi.pilotJoystick.getRawButton(RobotMap.LOGITECH_RB)) {
+    if (Robot.oi.coPilotJoystick.getRawButton(RobotMap.LOGITECH_RB)) {
       // once you push either LB or RB, the climb cant be reversed
       amIDoingTheClimbRear = true;
 
@@ -233,7 +234,8 @@ public class ClimberCommand extends Command {
       Robot.climberSystem.climberRearMotor.set(0.0);
     }
 
-    if (Robot.oi.pilotJoystick.getRawButton(RobotMap.LOGITECH_B)) {
+    // if (Robot.oi.pilotJoystick.getRawButton(RobotMap.LOGITECH_B)) {
+    if (Robot.oi.buttonBoard.getRawButton(2)) {
       // this is the code where we retract the front climb arm
       amIDoingTheClimbFront = false; // we no longer want to hold the front arm at 5
       if (!haveIRetractedTheFrontYet) {
@@ -247,7 +249,8 @@ public class ClimberCommand extends Command {
       }
     }
 
-    if (Robot.oi.pilotJoystick.getRawButton(RobotMap.LOGITECH_X)) {
+    // if (Robot.oi.pilotJoystick.getRawButton(RobotMap.LOGITECH_X)) {
+    if (Robot.oi.buttonBoard.getRawButton(4)) {
       // this is the code where we retract the rear climb arm
       amIDoingTheClimbRear = false; // we no longer want to hold the front arm at 5
       if (!haveIRetractedTheRearYet) {
@@ -261,7 +264,8 @@ public class ClimberCommand extends Command {
       }
     }
 
-    if (Robot.oi.pilotJoystick.getRawButton(RobotMap.LOGITECH_A)) {
+    // if (Robot.oi.pilotJoystick.getRawButton(RobotMap.LOGITECH_A)) {
+    if (Robot.oi.buttonBoard.getRawButton(1)) {
       // this is the code where we drive the back for the first time
       if (!haveIDrivenFirst) {
         haveIDrivenFirst = true;
@@ -276,7 +280,8 @@ public class ClimberCommand extends Command {
 
     }
 
-    if (Robot.oi.pilotJoystick.getRawButton(RobotMap.LOGITECH_Y)) {
+    // if (Robot.oi.pilotJoystick.getRawButton(RobotMap.LOGITECH_Y)) {
+    if (Robot.oi.buttonBoard.getRawButton(3)) {
       // this is the code where we drive the back for the first time
       if (!haveIDrivenSecond) {
         haveIDrivenSecond = true;

@@ -42,15 +42,15 @@ public class TestMoveMotor extends Command {
   @Override
   protected void execute() {
     // begin limelight testing code
-    double limeX = RobotMap.limelightTx.getDouble(0.0);
-    double limeY = RobotMap.limelightTy.getDouble(0.0);
-    double limeA = RobotMap.limelightTa.getDouble(0.0);
-    boolean limeHasTarget = RobotMap.limelightTv.getDouble(0.0) == 1;
+    // double limeX = RobotMap.limelightTx.getDouble(0.0);
+    // double limeY = RobotMap.limelightTy.getDouble(0.0);
+    // double limeA = RobotMap.limelightTa.getDouble(0.0);
+    // boolean limeHasTarget = RobotMap.limelightTv.getDouble(0.0) == 1;
 
-    SmartDashboard.putNumber("LimelightX", limeX);
-    SmartDashboard.putNumber("LimelightY", limeY);
-    SmartDashboard.putNumber("LimelightA", limeA);
-    SmartDashboard.putBoolean("LimelightHas", limeHasTarget);
+    // SmartDashboard.putNumber("LimelightX", limeX);
+    // SmartDashboard.putNumber("LimelightY", limeY);
+    // SmartDashboard.putNumber("LimelightA", limeA);
+    // SmartDashboard.putBoolean("LimelightHas", limeHasTarget);
     // end limelight testing code
     
     // double move = -Robot.oi.coPilotJoystick.getY();

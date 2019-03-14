@@ -24,7 +24,11 @@ public class DriveTrainMove extends Command {
   @Override
   protected void initialize() {
     shouldIDrive = true;
+    slowMultiplier = 1;
   }
+
+  // for slow button
+  double slowMultiplier = 1;
 
   // for vision toggle button
   boolean lastButtonPress2 = false;
@@ -35,7 +39,13 @@ public class DriveTrainMove extends Command {
 
   // Called repeatedly when this Command is scheduled to run
   @Override
-    protected void execute() {
+  protected void execute() {
+    if (Robot.oi.pilotJoystick.getRawButton(RobotMap.LOGITECH_LB)) {
+      slowMultiplier = 0.5;
+    } else {
+      slowMultiplier = 1;
+    }
+
     double pilotRawAxis0 = Robot.oi.pilotJoystick.getRawAxis(0);
     // the meat boi
     // double joyX = -Robot.oi.pilotJoystick.getX() * 0.8;
@@ -45,15 +55,15 @@ public class DriveTrainMove extends Command {
     // double joyZ = -Robot.oi.pilotJoystick.getZ() * 0.5;
     double joyZ = -Robot.oi.pilotJoystick.getRawAxis(4) * 0.5; // old z axis; right stick left to right
 
-    SmartDashboard.putNumber("joyX", joyX);
-    SmartDashboard.putNumber("joyZ", joyZ);
+    //SmartDashboard.putNumber("joyX", joyX);
+    //SmartDashboard.putNumber("joyZ", joyZ);
 
     if (pilotRawAxis0 > 0.5) {
       joyZ = RobotMap.MECANUM_FIX_RIGHT_THING;
     }
 
     if (shouldIDrive) {
-      Robot.literallyTheDriveTrain.moveMecanumDrive(joyY, joyX, joyZ);
+      Robot.literallyTheDriveTrain.moveMecanumDrive(joyY * slowMultiplier, joyX * slowMultiplier, joyZ * slowMultiplier);
     }
     // DriverStation.reportWarning("moving: " + joyY + " " + joyX + " " + joyZ, false);
 
@@ -63,7 +73,8 @@ public class DriveTrainMove extends Command {
     boolean limeHasTarget = RobotMap.limelightTv.getDouble(0.0) == 1;
 
     // boolean currentPress2 = Robot.oi.pilotJoystick.getRawButton(RobotMap.VISION_TOGGLE_BUTTON);
-    boolean currentPress2 = Robot.oi.coPilotJoystick.getRawButton(RobotMap.LOGITECH_Y);
+    // boolean currentPress2 = Robot.oi.coPilotJoystick.getRawButton(RobotMap.LOGITECH_Y);
+    boolean currentPress2 = Robot.oi.pilotJoystick.getRawButton(RobotMap.LOGITECH_X);
     boolean isDifferenceBetweenPresses2 = !(currentPress2 == lastButtonPress2);
 
     if (isDifferenceBetweenPresses2) {
@@ -76,36 +87,36 @@ public class DriveTrainMove extends Command {
     if (state2) {
       // we will do the vision stuff
       // DriverStation.reportWarning("thing", false);
-      SmartDashboard.putBoolean("VisionOn", true);
+      // SmartDashboard.putBoolean("VisionOn", true);
       if (limeHasTarget) {
         // if (limeX < RobotMap.VISION_RANGE && limeX > -RobotMap.VISION_RANGE) {
         //   limeX = 0.0;
         // }
         if (limeX > RobotMap.VISION_RANGE) {
           // start aligning the robot to the right
-          DriverStation.reportWarning("trying to move right with " + limeX, false);
+          // DriverStation.reportWarning("trying to move right with " + limeX, false);
           Robot.literallyTheDriveTrain.moveMecanumDrive(0.0, 0.0, -RobotMap.VISION_AUTO_SPEED);
         } else if (limeX < -RobotMap.VISION_RANGE) {
           // align robot to the left
-          DriverStation.reportWarning("trying to move left with " + limeX, false);
+          // DriverStation.reportWarning("trying to move left with " + limeX, false);
           Robot.literallyTheDriveTrain.moveMecanumDrive(0.0, 0.0, RobotMap.VISION_AUTO_SPEED);
         } else if (limeX > RobotMap.VISION_PRECISION_RANGE) {
           // start aligning the robot to the right precisely
-          DriverStation.reportWarning("trying to move right precisely with " + limeX, false);
+          // DriverStation.reportWarning("trying to move right precisely with " + limeX, false);
           Robot.literallyTheDriveTrain.moveMecanumDrive(0.0, 0.0, -RobotMap.VISION_PRECISION_SPEED);
         } else if (limeX < -RobotMap.VISION_PRECISION_RANGE) {
           // start aligning the robot to the left precisely
-          DriverStation.reportWarning("trying to move left precisely with " + limeX, false);
+          // DriverStation.reportWarning("trying to move left precisely with " + limeX, false);
           Robot.literallyTheDriveTrain.moveMecanumDrive(0.0, 0.0, RobotMap.VISION_PRECISION_SPEED);
         }
       }
     } else {
       // not doing vision stuff
-      SmartDashboard.putBoolean("VisionOn", false);
+      // SmartDashboard.putBoolean("VisionOn", false);
     }
     lastButtonPress2 = currentPress2;
 
-    SmartDashboard.putNumber("ult", RobotMap.ultrasonicBoi.getVoltage());
+    // SmartDashboard.putNumber("ult", RobotMap.ultrasonicBoi.getVoltage());
   }
 
   // Make this return true when this Command no longer needs to run execute()
