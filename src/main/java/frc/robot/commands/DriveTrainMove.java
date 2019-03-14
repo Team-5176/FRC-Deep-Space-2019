@@ -87,7 +87,7 @@ public class DriveTrainMove extends Command {
     if (state2) {
       // we will do the vision stuff
       // DriverStation.reportWarning("thing", false);
-      // SmartDashboard.putBoolean("VisionOn", true);
+      SmartDashboard.putBoolean("VisionOn", true);
       if (limeHasTarget) {
         // if (limeX < RobotMap.VISION_RANGE && limeX > -RobotMap.VISION_RANGE) {
         //   limeX = 0.0;
@@ -95,24 +95,28 @@ public class DriveTrainMove extends Command {
         if (limeX > RobotMap.VISION_RANGE) {
           // start aligning the robot to the right
           // DriverStation.reportWarning("trying to move right with " + limeX, false);
-          Robot.literallyTheDriveTrain.moveMecanumDrive(0.0, 0.0, -RobotMap.VISION_AUTO_SPEED);
+          // Robot.literallyTheDriveTrain.moveMecanumDrive(0.0, 0.0, -RobotMap.VISION_AUTO_SPEED);
+          Robot.literallyTheDriveTrain.moveMecanumDrive(0.0, -RobotMap.VISION_AUTO_SPEED, 0.0);
         } else if (limeX < -RobotMap.VISION_RANGE) {
           // align robot to the left
           // DriverStation.reportWarning("trying to move left with " + limeX, false);
-          Robot.literallyTheDriveTrain.moveMecanumDrive(0.0, 0.0, RobotMap.VISION_AUTO_SPEED);
+          // Robot.literallyTheDriveTrain.moveMecanumDrive(0.0, 0.0, RobotMap.VISION_AUTO_SPEED);
+          Robot.literallyTheDriveTrain.moveMecanumDrive(0.0, RobotMap.VISION_AUTO_SPEED, 0.0);
         } else if (limeX > RobotMap.VISION_PRECISION_RANGE) {
           // start aligning the robot to the right precisely
           // DriverStation.reportWarning("trying to move right precisely with " + limeX, false);
-          Robot.literallyTheDriveTrain.moveMecanumDrive(0.0, 0.0, -RobotMap.VISION_PRECISION_SPEED);
+          // Robot.literallyTheDriveTrain.moveMecanumDrive(0.0, 0.0, -RobotMap.VISION_PRECISION_SPEED);
+          Robot.literallyTheDriveTrain.moveMecanumDrive(0.0, -RobotMap.VISION_PRECISION_SPEED, 0.0);
         } else if (limeX < -RobotMap.VISION_PRECISION_RANGE) {
           // start aligning the robot to the left precisely
           // DriverStation.reportWarning("trying to move left precisely with " + limeX, false);
-          Robot.literallyTheDriveTrain.moveMecanumDrive(0.0, 0.0, RobotMap.VISION_PRECISION_SPEED);
+          // Robot.literallyTheDriveTrain.moveMecanumDrive(0.0, 0.0, RobotMap.VISION_PRECISION_SPEED);
+          Robot.literallyTheDriveTrain.moveMecanumDrive(0.0, RobotMap.VISION_PRECISION_SPEED, 0.0);
         }
       }
     } else {
       // not doing vision stuff
-      // SmartDashboard.putBoolean("VisionOn", false);
+      SmartDashboard.putBoolean("VisionOn", false);
     }
     lastButtonPress2 = currentPress2;
 

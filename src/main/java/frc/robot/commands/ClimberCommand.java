@@ -270,7 +270,7 @@ public class ClimberCommand extends Command {
       if (!haveIDrivenFirst) {
         haveIDrivenFirst = true;
         long timeAtStartToDriveForward = RobotController.getFPGATime();
-        while (timeAtStartToDriveForward + 4000000
+        while (timeAtStartToDriveForward + 4500000
              >= RobotController.getFPGATime()) {
         Robot.testSubsystem.setSpeed2(0.25);
       }

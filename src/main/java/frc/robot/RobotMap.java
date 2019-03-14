@@ -107,9 +107,9 @@ public class RobotMap {
   // public static double vacuumSpeed = 0.2; // production value
   // public static double vacuumSpeed = 1.0; // for testing with chinese motors
   public static final double VISION_RANGE = 3.0;
-  public static final double VISION_AUTO_SPEED = 0.3;
+  public static final double VISION_AUTO_SPEED = 0.5;
   public static final double VISION_PRECISION_RANGE = 1.0;
-  public static final double VISION_PRECISION_SPEED = 0.2;
+  public static final double VISION_PRECISION_SPEED = 0.3;
 
   // public static final double PANIC_CLIMB_SPEED_FRONT = 0.15; // subject to change
   // public static final double PANIC_CLIMB_SPEED_REAR = 0.08; // subject to change
@@ -123,8 +123,8 @@ public class RobotMap {
   public static final double PANIC_CLIMB_SPEED_REAR = 0.08; // subject to change
   // public static final double GO_CLIMB_SPEED_FRONT = 0.50;
   // public static final double GO_CLIMB_SPEED_REAR = 0.455;
-  public static final double GO_CLIMB_SPEED_FRONT = 0.25;
-  public static final double GO_CLIMB_SPEED_REAR = 0.20;
+  public static final double GO_CLIMB_SPEED_FRONT = 0.35;
+  public static final double GO_CLIMB_SPEED_REAR = 0.30;
 
   // PCM
   public static final int VACUUM_SOLENOID_0_A = 7;
