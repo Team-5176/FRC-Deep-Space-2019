@@ -62,7 +62,7 @@ public class MovePneumaticArms extends Command {
       }
     }
 
-    if (state) {
+    if (!state) {
       // Robot.pneumaticArms.setSolenoid0(false);
       // Robot.pneumaticArms.setSolenoid1(true);
 

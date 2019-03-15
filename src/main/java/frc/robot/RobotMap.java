@@ -103,6 +103,7 @@ public class RobotMap {
   // Other Drivetrain Constants
   public static double maxSpeed = 1;
   public static final double MAX_DRIVE_SPEED =1;// 0.6;
+  public static final double DRIVE_SPEED_MULTIPLIER = 0.5;
   public static final double vacuumSpeed = 0.4; // testing for matt
   // public static double vacuumSpeed = 0.2; // production value
   // public static double vacuumSpeed = 1.0; // for testing with chinese motors

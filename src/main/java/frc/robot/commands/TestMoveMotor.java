@@ -89,7 +89,7 @@ public class TestMoveMotor extends Command {
         motorState = !motorState;
       }
     }
-    if (motorState) {
+    if (!motorState) {
       // DriverStation.reportWarning("it is on", false);
       Robot.testSubsystem.testingMotor.set(RobotMap.vacuumSpeed); // port 0; manual control
       Robot.testSubsystem.secondVacuum.set(RobotMap.vacuumSpeed); // port 8; manual control

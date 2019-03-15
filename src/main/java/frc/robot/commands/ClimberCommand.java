@@ -292,7 +292,7 @@ public class ClimberCommand extends Command {
         // now we move the bottom wheels at 50% and the front
         // wheels on 10% for 2 seconds
         long timeAtMoveOnBoxAgain = RobotController.getFPGATime();
-        while (timeAtMoveOnBoxAgain + 6500000 >= RobotController.getFPGATime()) {
+        while (timeAtMoveOnBoxAgain + 5800000 >= RobotController.getFPGATime()) {
           Robot.testSubsystem.setSpeed2(0.25);
           Robot.literallyTheDriveTrain.setSpeedFrontMotorsOnly(0.1);
         }

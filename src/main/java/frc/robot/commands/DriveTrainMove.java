@@ -51,9 +51,9 @@ public class DriveTrainMove extends Command {
     // double joyX = -Robot.oi.pilotJoystick.getX() * 0.8;
     double joyX = -pilotRawAxis0 * 0.8; // old x axis; left stick left to right
     // double joyY = Robot.oi.pilotJoystick.getY() * 0.5;
-    double joyY = Robot.oi.pilotJoystick.getRawAxis(1) * 0.5; // old y axis; left stick up to down
+    double joyY = Robot.oi.pilotJoystick.getRawAxis(1) * RobotMap.DRIVE_SPEED_MULTIPLIER; // old y axis; left stick up to down
     // double joyZ = -Robot.oi.pilotJoystick.getZ() * 0.5;
-    double joyZ = -Robot.oi.pilotJoystick.getRawAxis(4) * 0.5; // old z axis; right stick left to right
+    double joyZ = -Robot.oi.pilotJoystick.getRawAxis(4) * RobotMap.DRIVE_SPEED_MULTIPLIER; // old z axis; right stick left to right
 
     //SmartDashboard.putNumber("joyX", joyX);
     //SmartDashboard.putNumber("joyZ", joyZ);
