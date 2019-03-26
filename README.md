@@ -1,5 +1,7 @@
 # FRC-Deep-Space-2019
 
-See LICENSE for license.
+SLUH Robotics Team 5176
 
-**TL;DR: Don't use anything here until after the 2019 FRC season.**
+Code for FRC 2019 Deep Space season
+
+MIT License
