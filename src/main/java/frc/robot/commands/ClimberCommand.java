@@ -301,6 +301,25 @@ public class ClimberCommand extends Command {
       }
 
     }
+
+    if (Robot.oi.coPilotJoystick.getRawButton(RobotMap.LOGITECH_Y)) {
+      // this is the code where we retract the front climb arm
+      amIDoingTheClimbFront = false; // we no longer want to hold the front arm at 5
+      // if (!haveIRetractedTheFrontYet) {
+      // only run once if the front has not been retracted yet
+      // haveIRetractedTheFrontYet = true;
+      // long timeAtStartOfFrontRetract = RobotController.getFPGATime();
+      // while (timeAtStartOfFrontRetract + 5300000 >= RobotController.getFPGATime()) {
+      Robot.climberSystem.climberFrontMotor.set(0.30);
+      // }
+      // Robot.climberSystem.climberFrontMotor.set(0.0);
+      // }
+    }
+
+    if (Robot.oi.coPilotJoystick.getRawButton(RobotMap.LOGITECH_B)) {
+      amIDoingTheClimbRear = false;
+      Robot.climberSystem.climberRearMotor.set(0.30);
+    }
     // END TESTING CODE
   }
 
